@@ -2,10 +2,6 @@ data "aws_route53_zone" "example" {
   name = "mizzy.org"
 }
 
-resource "aws_route53_zone" "test_example" {
-  name = "mizzy.org"
-}
-
 resource "aws_route53_record" "example" {
   zone_id = data.aws_route53_zone.example.zone_id
   name    = data.aws_route53_zone.example.name
