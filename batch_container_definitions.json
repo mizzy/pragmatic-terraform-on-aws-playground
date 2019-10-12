@@ -8,9 +8,19 @@
             "options": {
                 "awslogs-region": "ap-northeast-1",
                 "awslogs-stream-prefix": "batch",
-                "awslogs-group": "/ecs-schedules-tasks/example"
+                "awslogs-group": "/ecs-scheduled-tasks/example"
             }
         },
-        "command": ["/bin/date"]
+        "secrets": [
+            {
+                "name": "DB_USERNAME",
+                "valueFrom": "/db/username"
+            },
+            {
+                "name": "DB_PASSWORD",
+                "valueFrom": "/db/password"
+            }
+        ],
+        "command": ["/usr/bin/env"]
     }
 ]
