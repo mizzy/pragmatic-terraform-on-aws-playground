@@ -1,5 +1,5 @@
 data "aws_route53_zone" "example" {
-  name = "mizzy.org"
+  name = "serverspec-operations.org"
 }
 
 resource "aws_route53_record" "example" {
@@ -13,4 +13,3 @@ resource "aws_route53_record" "example" {
     evaluate_target_health = true
   }
 }
-
