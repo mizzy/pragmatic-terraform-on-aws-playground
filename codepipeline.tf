@@ -27,3 +27,15 @@ module "codepipeline_role" {
   identifier = "codepipeline.amazonaws.com"
   policy     = data.aws_iam_policy_document.codepipeline.json
 }
+
+resource "aws_s3_bucket" "artifact" {
+  bucket = "artifact-pragmatic-terraform-on-aws-mizzy"
+
+  lifecycle_rule {
+    enabled = true
+
+    expiration {
+      days = "180"
+    }
+  }
+}
