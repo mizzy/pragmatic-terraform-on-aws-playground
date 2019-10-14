@@ -1,9 +1,9 @@
 provider "github" {
-  organization = "your-github-name"
+  organization = "mizzy"
 }
 
 resource "github_repository_webhook" "example" {
-  repository = "your-repository"
+  repository = "test"
 
   configuration {
     url          = aws_codepipeline_webhook.example.url

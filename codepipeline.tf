@@ -56,8 +56,8 @@ resource "aws_codepipeline" "example" {
       output_artifacts = ["Source"]
 
       configuration = {
-        Owner                = "your-github-name"
-        Repo                 = "your-repository"
+        Owner                = "mizzy"
+        Repo                 = "test"
         Branch               = "master"
         PollForSourceChanges = false
       }
