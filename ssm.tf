@@ -70,3 +70,28 @@ resource "aws_instance" "example_for_operations" {
 output "operation_instance_id" {
   value = aws_instance.example_for_operations.id
 }
+
+resource "aws_s3_bucket" "operation" {
+  bucket = "operation-pragmatic-terraform-on-aws-mizzy"
+
+  lifecycle_rule {
+    enabled = true
+
+    expiration {
+      days = "180"
+    }
+  }
+}
+
+resource "aws_cloudwatch_log_group" "operation" {
+  name              = "/operation"
+  retention_in_days = 180
+}
+
+resource "aws_ssm_document" "session_manager_run_shell" {
+  name            = "SSM-SessionManagerRunShell"
+  document_type   = "Session"
+  document_format = "JSON"
+
+  content = file("./session_manager_run_shell.json")
+}
